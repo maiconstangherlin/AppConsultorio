@@ -1,4 +1,7 @@
 using Data.Context;
+using Data.Repository;
+using Manager.Implementation;
+using Manager.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +27,9 @@ namespace WebApi
 
             services.AddControllers();
             services.AddDbContext<ConsultorioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
+
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteManager, ClienteManager>();
 
             services.AddSwaggerGen(c =>
             {

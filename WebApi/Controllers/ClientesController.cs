@@ -1,7 +1,9 @@
 ﻿using Core.Domain;
+using Manager.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,31 +13,25 @@ namespace WebApi.Controllers
     [ApiController]
     public class ClientesController : ControllerBase
     {
+        private readonly IClienteManager clienteManager;
+
+        public ClientesController(IClienteManager clienteManager)
+        {
+            this.clienteManager = clienteManager;
+        }
+
         // GET: api/<ClientesController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(new List<Cliente>() {
-                new Cliente
-                {
-                    Id = 1,
-                    Nome = "Maicon",
-                    DataNascimento = DateTime.Now
-                },
-                new Cliente
-                {
-                    Id = 2,
-                    Nome = "Andri",
-                    DataNascimento = DateTime.Now
-                }
-            });
+            return Ok(await clienteManager.GetClientesAsync());
         }
 
         // GET api/<ClientesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            return Ok(await clienteManager.GetClienteAsync(id));
         }
 
         // POST api/<ClientesController>
