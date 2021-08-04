@@ -1,4 +1,6 @@
-﻿using Core.Domain;
+﻿using AutoMapper;
+using Core.Domain;
+using Core.Shared.ModelViews;
 using Manager.Interface;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,10 +11,12 @@ namespace Manager.Implementation
     public class ClienteManager : IClienteManager
     {
         private readonly IClienteRepository clienteRepository;
+        private readonly IMapper mapper;
 
-        public ClienteManager(IClienteRepository clienteRepository)
+        public ClienteManager(IClienteRepository clienteRepository, IMapper mapper)
         {
             this.clienteRepository = clienteRepository;
+            this.mapper = mapper;
         }
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
@@ -28,10 +32,11 @@ namespace Manager.Implementation
         public async Task DeleteAsync(int id)
         {
             await clienteRepository.DeleteAsync(id);
-        }     
+        }
 
-        public async Task<Cliente> InsertClienteAsync(Cliente cliente)
+        public async Task<Cliente> InsertClienteAsync(NovoCliente novoCliente)
         {
+            var cliente = mapper.Map<Cliente>(novoCliente);
             return await clienteRepository.InsertClienteAsync(cliente);
         }
 

@@ -1,4 +1,5 @@
 ﻿using Core.Domain;
+using Core.Shared.ModelViews;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Manager.Interface
         Task DeleteAsync(int id);
         Task<IEnumerable<Cliente>> GetClientesAsync();
         Task<Cliente> GetClienteAsync(int id);
-        Task<Cliente> InsertClienteAsync(Cliente cliente);
+        Task<Cliente> InsertClienteAsync(NovoCliente novoCliente);
         Task<Cliente> UpdateClienteAsync(Cliente cliente);
 
     }

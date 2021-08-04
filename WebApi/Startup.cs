@@ -3,6 +3,7 @@ using Data.Repository;
 using FluentValidation.AspNetCore;
 using Manager.Implementation;
 using Manager.Interface;
+using Manager.Mappings;
 using Manager.Validator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,9 +32,11 @@ namespace WebApi
             services.AddControllers()
                 .AddFluentValidation(f =>
                {
-                   f.RegisterValidatorsFromAssemblyContaining<ClienteValidator>();
+                   f.RegisterValidatorsFromAssemblyContaining<NovoClienteValidator>();
                    f.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
                });
+
+            services.AddAutoMapper(typeof(NovoClienteMappingProfile));            
 
             services.AddDbContext<ConsultorioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
 

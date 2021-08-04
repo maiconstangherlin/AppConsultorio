@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core.Shared\Core.Shared.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="automapper" Version="10.1.1" />
     <PackageReference Include="FluentValidation.Aspnetcore" Version="10.3.0" />
   </ItemGroup>
 

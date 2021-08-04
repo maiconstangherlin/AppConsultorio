@@ -1,4 +1,5 @@
 ﻿using Core.Domain;
+using Core.Shared.ModelViews;
 using Manager.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -36,9 +37,9 @@ namespace WebApi.Controllers
 
         // POST api/<ClientesController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Cliente cliente)
+        public async Task<IActionResult> Post([FromBody] NovoCliente novoCliente)
         {
-            var clienteInserido = await clienteManager.InsertClienteAsync(cliente);
+            var clienteInserido = await clienteManager.InsertClienteAsync(novoCliente);
             return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido);
         }
 

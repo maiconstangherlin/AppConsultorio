@@ -1,12 +1,13 @@
 ﻿using Core.Domain;
+using Core.Shared.ModelViews;
 using FluentValidation;
 using System;
 
 namespace Manager.Validator
 {
-    public class ClienteValidator : AbstractValidator<Cliente>
+    public class NovoClienteValidator : AbstractValidator<NovoCliente>
     {
-        public ClienteValidator()
+        public NovoClienteValidator()
         {
             RuleFor(x => x.Nome).NotNull().NotEmpty().MinimumLength(10).MaximumLength(150);
             RuleFor(x => x.DataNascimento).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));

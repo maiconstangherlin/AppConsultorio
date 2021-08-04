@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{D1A447B0-3604-422D-88B5-ECE0793E774A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{D1A447B0-3604-422D-88B5-ECE0793E774A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.csproj", "{931C4C2F-BDDB-418B-A0A5-0CB37964AF42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager", "Manager\Manager.csproj", "{931C4C2F-BDDB-418B-A0A5-0CB37964AF42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{733A9C3F-AF37-4221-B889-F58798B81184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{733A9C3F-AF37-4221-B889-F58798B81184}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2240959B-5EAA-4B5F-A2BC-5E8C13CC0C16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{2240959B-5EAA-4B5F-A2BC-5E8C13CC0C16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{74179E70-43E7-4240-A916-1DB3F29136F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{74179E70-43E7-4240-A916-1DB3F29136F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shared", "Core.Shared\Core.Shared.csproj", "{947DD570-1DD6-4B0E-9644-A592823ADC2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{74179E70-43E7-4240-A916-1DB3F29136F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74179E70-43E7-4240-A916-1DB3F29136F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74179E70-43E7-4240-A916-1DB3F29136F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947DD570-1DD6-4B0E-9644-A592823ADC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947DD570-1DD6-4B0E-9644-A592823ADC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947DD570-1DD6-4B0E-9644-A592823ADC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947DD570-1DD6-4B0E-9644-A592823ADC2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
