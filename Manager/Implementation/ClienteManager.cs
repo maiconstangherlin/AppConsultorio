@@ -17,13 +17,27 @@ namespace Manager.Implementation
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-            return await clienteRepository.GetClienteAsync();
+            return await clienteRepository.GetClientesAsync();
         }
 
         public async Task<Cliente> GetClienteAsync(int id)
         {
             return await clienteRepository.GetClienteAsync(id);
         }
-        
+
+        public async Task DeleteAsync(int id)
+        {
+            await clienteRepository.DeleteAsync(id);
+        }     
+
+        public async Task<Cliente> InsertClienteAsync(Cliente cliente)
+        {
+            return await clienteRepository.InsertClienteAsync(cliente);
+        }
+
+        public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
+        {
+            return await clienteRepository.UpdateClienteAsync(cliente);
+        }
     }
 }
