@@ -12,7 +12,7 @@ namespace Manager.Interface
         Task<IEnumerable<Cliente>> GetClientesAsync();
         Task<Cliente> GetClienteAsync(int id);
         Task<Cliente> InsertClienteAsync(NovoCliente novoCliente);
-        Task<Cliente> UpdateClienteAsync(Cliente cliente);
+        Task<Cliente> UpdateClienteAsync(AlteraCliente alteraCliente);
 
     }
 }

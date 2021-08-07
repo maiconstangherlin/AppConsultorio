@@ -45,9 +45,9 @@ namespace WebApi.Controllers
 
         // PUT api/<ClientesController>/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Cliente cliente)
+        public async Task<IActionResult> Put([FromBody] AlteraCliente alteraCliente)
         {
-            var clienteAtualizado = await clienteManager.UpdateClienteAsync(cliente);
+            var clienteAtualizado = await clienteManager.UpdateClienteAsync(alteraCliente);
             if (clienteAtualizado == null)
                 return NotFound();
 

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Globalization;
+using WebApi.Configuration.SwaggerConfig;
 
 namespace WebApi
 {
@@ -30,23 +31,15 @@ namespace WebApi
         {
 
             services.AddControllers()
-                .AddFluentValidation(f =>
-               {
-                   f.RegisterValidatorsFromAssemblyContaining<NovoClienteValidator>();
-                   f.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
-               });
+                .AddFluentValidationConfig();
 
-            services.AddAutoMapper(typeof(NovoClienteMappingProfile));            
+            services.AddAutoMapperConfig();
 
             services.AddDbContext<ConsultorioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
 
-            services.AddScoped<IClienteRepository, ClienteRepository>();
-            services.AddScoped<IClienteManager, ClienteManager>();
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
-            });
+            services.AddDependencyInjectionConfig();
+            
+            services.AddSwaggerConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,8 +48,7 @@ namespace WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
+                app.UseSwaggerConfiguration();
             }
 
             app.UseHttpsRedirection();

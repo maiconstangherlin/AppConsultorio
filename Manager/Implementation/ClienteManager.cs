@@ -40,8 +40,9 @@ namespace Manager.Implementation
             return await clienteRepository.InsertClienteAsync(cliente);
         }
 
-        public async Task<Cliente> UpdateClienteAsync(Cliente cliente)
+        public async Task<Cliente> UpdateClienteAsync(AlteraCliente alteraCliente)
         {
+            var cliente = mapper.Map<Cliente>(alteraCliente);
             return await clienteRepository.UpdateClienteAsync(cliente);
         }
     }
