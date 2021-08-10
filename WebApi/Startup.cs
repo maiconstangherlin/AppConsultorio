@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Globalization;
+using WebApi.Configuration;
 using WebApi.Configuration.SwaggerConfig;
 
 namespace WebApi
@@ -35,7 +36,7 @@ namespace WebApi
 
             services.AddAutoMapperConfig();
 
-            services.AddDbContext<ConsultorioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppConnection")));
+            services.AddDatabaseConfiguration(Configuration);
 
             services.AddDependencyInjectionConfig();
             
@@ -50,6 +51,8 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerConfiguration();
             }
+
+            app.UseDatabaseConfiguration();
 
             app.UseHttpsRedirection();
 
