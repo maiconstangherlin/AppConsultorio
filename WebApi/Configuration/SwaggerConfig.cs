@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace WebApi.Configuration.SwaggerConfig
 {
@@ -11,7 +14,26 @@ namespace WebApi.Configuration.SwaggerConfig
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "WebApi",
+                        Version = "v1",
+                        Description = "API da aplicação de consultório",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Maicon Stangherlin",
+                            Email = "maicon.stangherlin@gmail.com",
+                            Url = new Uri("https://github.com/maiconstangherlin")
+                        }
+                    });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+                xmlPath = Path.Combine(AppContext.BaseDirectory, "Core.Shared.xml");
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
