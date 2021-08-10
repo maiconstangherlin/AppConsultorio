@@ -12,16 +12,18 @@ namespace Core.Shared.ModelViews
         /// </summary>
         /// <example>Juca Bala</example>
         public string Nome { get; set; }
-        
+
         /// <summary>
         /// Data de nascimento do cliente
         /// </summary>
         /// <example>2000-01-01</example>
         public DateTime DataNascimento { get; set; }
 
+        ///<summary>Sexo</summary>
         /// <example>F</example>
         public char Sexo { get; set; }
-        
+
+        /// <summary>Telefone</summary>
         /// <example>46988776655</example>
         public string Telefone { get; set; }
 

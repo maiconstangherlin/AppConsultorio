@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
@@ -13,7 +14,7 @@ namespace WebApi.Configuration.SwaggerConfig
         public static void AddSwaggerConfiguration(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
-            {
+            {                
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
@@ -28,13 +29,15 @@ namespace WebApi.Configuration.SwaggerConfig
                         }
                     });
 
+                c.AddFluentValidationRulesScoped();
+
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
                 xmlPath = Path.Combine(AppContext.BaseDirectory, "Core.Shared.xml");
-                c.IncludeXmlComments(xmlPath);
-            });
+                c.IncludeXmlComments(xmlPath);                
+            });            
         }
 
         public static void UseSwaggerConfiguration(this IApplicationBuilder app)

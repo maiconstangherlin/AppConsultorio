@@ -22,9 +22,11 @@
             <example>2000-01-01</example>
         </member>
         <member name="P:Core.Shared.ModelViews.NovoCliente.Sexo">
-            <example>F</example>
+            <summary>Sexo</summary>
+             <example>F</example>
         </member>
         <member name="P:Core.Shared.ModelViews.NovoCliente.Telefone">
+            <summary>Telefone</summary>
             <example>46988776655</example>
         </member>
         <member name="P:Core.Shared.ModelViews.NovoCliente.Documento">
