@@ -3,6 +3,8 @@ using Core.Shared.ModelViews;
 using Manager.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SerilogTimings;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,10 +18,12 @@ namespace WebApi.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly IClienteManager clienteManager;
+        private readonly ILogger<ClientesController> logger;
 
-        public ClientesController(IClienteManager clienteManager)
+        public ClientesController(IClienteManager clienteManager, ILogger<ClientesController> logger)
         {
             this.clienteManager = clienteManager;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -55,7 +59,17 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] NovoCliente novoCliente)
         {
-            var clienteInserido = await clienteManager.InsertClienteAsync(novoCliente);
+            //Exemplo de log contendo dados de um objeto. A sintaxe abaixo é interpretada pelo Serilog
+            logger.LogInformation("Objeto recebido {@novoCliente}", novoCliente);
+
+            Cliente clienteInserido;
+
+            //Exemplo de log com duração de tempo de execução
+            using (Operation.Time("Tempo de adição de um novo cliente."))
+            {
+                clienteInserido = await clienteManager.InsertClienteAsync(novoCliente);
+            }
+
             return CreatedAtAction(nameof(Get), new { id = clienteInserido.Id }, clienteInserido);
         }
 
