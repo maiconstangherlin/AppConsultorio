@@ -1,4 +1,5 @@
 ﻿using Core.Domain;
+using Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.Context
@@ -10,6 +11,13 @@ namespace Data.Context
 
         public ConsultorioContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
         }
 
     }
