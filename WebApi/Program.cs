@@ -44,7 +44,7 @@ namespace WebApi
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{ambiente}.json")
+                .AddJsonFile($"appsettings.{ambiente}.json", optional: true)
                 .Build();
             return configuration;
         }

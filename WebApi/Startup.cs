@@ -39,18 +39,21 @@ namespace WebApi
             services.AddDatabaseConfiguration(Configuration);
 
             services.AddDependencyInjectionConfig();
-            
+
             services.AddSwaggerConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseExceptionHandler("/error");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwaggerConfiguration();
-            }
+            }            
+
+            app.UseSwaggerConfiguration();
 
             app.UseDatabaseConfiguration();
 
