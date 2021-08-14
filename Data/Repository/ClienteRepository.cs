@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class ClienteRepository: IClienteRepository
+    public class ClienteRepository : IClienteRepository
     {
         private readonly ConsultorioContext context;
 
@@ -18,12 +18,16 @@ namespace Data.Repository
 
         public async Task<IEnumerable<Cliente>> GetClientesAsync()
         {
-            return await context.Clientes.AsNoTracking().ToListAsync();
+            return await context.Clientes
+                .Include(p => p.Endereco)
+                .AsNoTracking().ToListAsync();
         }
 
         public async Task<Cliente> GetClienteAsync(int id)
         {
-            return await context.Clientes.FindAsync(id);
+            return await context.Clientes
+                .Include(p => p.Endereco)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Cliente> InsertClienteAsync(Cliente cliente)
@@ -42,7 +46,7 @@ namespace Data.Repository
             }
 
             //Atribui ao 'clienteConsultado' todos os valores das prop. de 'cliente' que derem "match" com as prop. de 'clienteConsultado'
-            context.Entry(clienteConsultado).CurrentValues.SetValues(cliente);            
+            context.Entry(clienteConsultado).CurrentValues.SetValues(cliente);
             context.Clientes.Update(clienteConsultado);
             await context.SaveChangesAsync();
 

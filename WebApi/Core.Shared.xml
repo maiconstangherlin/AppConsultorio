@@ -35,5 +35,23 @@
             </summary>
             <example>000111554487</example>
         </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Cep">
+            <example>85501500</example>
+        </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Estado">
+            <example>PR</example>
+        </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Cidade">
+            <example>Curitiba</example>
+        </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Logradouro">
+            <example>Rua do Governador</example>
+        </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Numero">
+            <example>123</example>
+        </member>
+        <member name="P:Core.Shared.ModelViews.NovoEndereco.Complemento">
+            <example>Apto 201</example>
+        </member>
     </members>
 </doc>

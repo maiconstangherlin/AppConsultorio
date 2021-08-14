@@ -32,5 +32,7 @@ namespace Core.Shared.ModelViews
         /// </summary>
         /// <example>000111554487</example>
         public string Documento { get; set; }
+
+        public NovoEndereco Endereco { get; set; }
     }
 }

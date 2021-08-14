@@ -14,6 +14,7 @@ namespace WebApi.Configuration.SwaggerConfig
                 {
                     f.RegisterValidatorsFromAssemblyContaining<NovoClienteValidator>();
                     f.RegisterValidatorsFromAssemblyContaining<AlteraClienteValidator>();
+                    f.RegisterValidatorsFromAssemblyContaining<NovoEnderecoValidator>();
                     f.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
                 });
         }

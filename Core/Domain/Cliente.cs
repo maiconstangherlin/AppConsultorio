@@ -13,5 +13,7 @@ namespace Core.Domain
         public string Documento { get; set; }
         public DateTime Criacao { get; set; }
         public DateTime? UltimaAtualizacao { get; set; }
+
+        public Endereco Endereco { get; set; }
     }
 }

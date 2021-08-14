@@ -16,6 +16,7 @@
     <PackageReference Include="automapper.extensions.microsoft.dependencyinjection" Version="8.1.1" />
     <PackageReference Include="FluentValidation.Aspnetcore" Version="10.3.0" />
     <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" Version="5.2.0" />
+    <PackageReference Include="Microsoft.aspnetcore.mvc.newtonsoftjson" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>
